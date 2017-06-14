@@ -29,7 +29,7 @@ namespace SumSeconds
             { Console.WriteLine(mins + ":" + "0" + seconds); }
             else
             { Console.WriteLine(mins + ":" + seconds); }
-
+            //test
 
         }
     }
