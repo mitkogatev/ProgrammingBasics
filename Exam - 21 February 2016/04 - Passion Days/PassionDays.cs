@@ -12,28 +12,43 @@ namespace _04___Passion_Days
         {
             decimal startMoney = decimal.Parse(Console.ReadLine());
             int purchases = 0;
-            
-                string input = "";
-                while(true)
+            decimal price = 0.0m;
+            string input = "";
+            while (input != "mall.Enter")
+            //while (input!= "mall.Exit")
+            {
+                input = Console.ReadLine();
+            }
+                //input = Console.ReadLine();
+                if (input == "mall.Enter")
                 {
-                if (Console.ReadLine() == "mall.Enter")
-                {
-                    input = Console.ReadLine();
-                    if (input == "mall.Exit") break;
-                    foreach (char c in input)
+                    while (true)
                     {
-                        if (char.IsUpper(c)) startMoney -= (int)c * 0.5m;
-                        else if (char.IsLower(c)) startMoney -= (int)c * 0.3m;
-                        else if (c == '%') startMoney /= 2;
-                        else if (c == '*') startMoney += 10.0m;
-                        else startMoney -= (int)c;
-                        if (c != '*') purchases++;
+                        input = Console.ReadLine();
+                        if (input == "mall.Exit") break;
+                        foreach (char c in input)
+                        {
+                        price = 0.00m;
+                         //(int)c * 0.5m
+                        if (char.IsUpper(c)) price= (int)c * 0.5m;//startMoney -= (int)c * 0.5m;
+                        else if (char.IsLower(c)) price=(int)c * 0.3m;
+                            else if (c == '%') price=startMoney /= 2;
+                            else if (c == '*') startMoney += 10.0m;
+                            else price = (int)c;
+                        if (c != '*' && price < startMoney && (startMoney-price)>0 && startMoney>0)  { purchases++; startMoney -= price; }
+                        }
                     }
                 }
                  
                    
-                Console.WriteLine("money:"+startMoney);
+            //}
+            if (purchases ==0)
+            {
+                Console.WriteLine($"No purchases. Money left: {startMoney:f2} lv.");
             }
+            else
+            Console.WriteLine($"{purchases} purchases. Money left: {startMoney:f2} lv.");
+
         }
     }
 }
