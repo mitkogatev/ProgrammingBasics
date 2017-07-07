@@ -32,10 +32,10 @@ namespace _04___Passion_Days
                          //(int)c * 0.5m
                         if (char.IsUpper(c)) price= (int)c * 0.5m;//startMoney -= (int)c * 0.5m;
                         else if (char.IsLower(c)) price=(int)c * 0.3m;
-                            else if (c == '%') price=startMoney /= 2;
+                            else if (c == '%') price=startMoney / 2;
                             else if (c == '*') startMoney += 10.0m;
                             else price = (int)c;
-                        if (c != '*' && price < startMoney && (startMoney-price)>0 && startMoney>0)  { purchases++; startMoney -= price; }
+                        if (c != '*' && price <= startMoney && (startMoney-price)>=0 && startMoney>0)  { purchases++; startMoney -= price; }
                         }
                     }
                 }
